@@ -4,12 +4,14 @@ import { Route } from 'react-router-dom';
 
 import Header from "./components/Header.js";
 import CharacterList from './components/CharacterList';
+import SearchForm from './components/SearchForm';
 
 
 
 export default function App() {
   const [apiData, setApiData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [searchParams, setSearchParams] = useState('');
   function useAxios() {
 
     useEffect(() => {
@@ -32,8 +34,12 @@ export default function App() {
     <main>
       <Header />
       <Route
-        path='/characters'
-        render={(props) => <CharacterList {...props} characters={apiData.results} />}
+        path="/characters"
+        render={(props) => <CharacterList {...props} characters={apiData.results} searchParams={searchParams} />}
+      />
+      <Route
+        exact path="/"
+        render={(props) => <SearchForm {...props} setSearchParams={setSearchParams} />}
       />
     </main>
   );
