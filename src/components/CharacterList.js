@@ -9,7 +9,7 @@ export default function CharacterList(props) {
         if (props.searchParams === '') {
           return <CharacterCard key={character.id} character={character} />
         }
-        else if (character.name.includes(props.searchParams)) {
+        else if (character.name.toLowerCase().includes(props.searchParams.toLowerCase())) {
           return <CharacterCard key={character.id} character={character} />
         }
       })}

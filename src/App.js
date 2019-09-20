@@ -5,6 +5,7 @@ import { Route } from 'react-router-dom';
 import Header from "./components/Header.js";
 import CharacterList from './components/CharacterList';
 import SearchForm from './components/SearchForm';
+import WelcomePage from './components/WelcomePage';
 
 
 
@@ -34,12 +35,16 @@ export default function App() {
     <main>
       <Header />
       <Route
-        path="/characters"
-        render={(props) => <CharacterList {...props} characters={apiData.results} searchParams={searchParams} />}
+        exact path="/"
+        component={WelcomePage}
       />
       <Route
-        exact path="/"
+        path="/"
         render={(props) => <SearchForm {...props} setSearchParams={setSearchParams} />}
+      />
+      <Route
+        path="/characters"
+        render={(props) => <CharacterList {...props} characters={apiData.results} searchParams={searchParams} />}
       />
     </main>
   );

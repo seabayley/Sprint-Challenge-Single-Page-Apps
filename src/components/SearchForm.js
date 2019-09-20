@@ -19,8 +19,7 @@ export default function SearchForm(props) {
     <section className="search-form">
       <form onSubmit={handleSubmit}>
         <label>
-          Search:
-         <input type="text" onChange={handleInput}></input>
+          <input type="text" onChange={handleInput}></input>
         </label>
         <Button />
       </form>
